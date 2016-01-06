@@ -60,7 +60,7 @@ def getDatasetListforTag(tag = None, l = None, verbose = False):
         for dataset in d["result"]["packages"]:
 			record_counter += 1
 			try:
-			    f.writerow([
+                            row = [
 			    	dataset["title"],
 			    	dataset["name"],
 			    	dataset["owner_org"],
@@ -71,7 +71,9 @@ def getDatasetListforTag(tag = None, l = None, verbose = False):
 			    	dataset["num_resources"],
 			    	dataset["num_tags"],
 			    	len(dataset["extras"])
-			    	])
+			    	]
+                            row = [unicode(x).encode('utf-8') for x in row]
+                            f.writerow(row)
 
 			except Exception as e:
 				err = color("ERROR", "red", attrs=['bold'])
