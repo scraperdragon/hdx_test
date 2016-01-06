@@ -66,7 +66,7 @@ def getDatasetListforTag(tag = None, l = None, verbose = False):
 			    	dataset["owner_org"],
 			    	dataset["maintainer"],
 			    	dataset["maintainer_email"],
-			    	dataset["revision_timestamp"],
+			    	dataset["metadata_modified"],
 			    	dataset["id"],
 			    	dataset["num_resources"],
 			    	dataset["num_tags"],
@@ -93,11 +93,12 @@ def getDatasetListforTag(tag = None, l = None, verbose = False):
 				# Printing more detailed error messages.
 				if verbose is True:
 					print e
+                                raise
 
 	print "----------------------------------"
 	print "************* %s ***************" % (color("DONE", "blue", attrs=['blink','bold']))
 	print "----------------------------------"
-	
+
 
 # Running the function.
-getDatasetListforTsg("ebola", csv_path, verbose = False)
+getDatasetListforTag("ebola", csv_path, verbose = False)
